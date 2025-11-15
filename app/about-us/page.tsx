@@ -10,25 +10,26 @@ import StatsSection from "@/components/homePage/StatsSection";
 import Testimonials from "@/components/homePage/Testimonials";
 import TrainingFeatures from "@/components/homePage/TrainingFeatures";
 import WhyChoose from "@/components/homePage/WhyChoose";
+import NavMenu from "@/components/NavMenu";
 
 export default function Home() {
-  return (
-    <div className="w-full h-full overflow-hidden">
-      {/* <IntroLoader /> */}
-      <HeroSection />
-      <AboutUs />
-      <CTA mode={0}/>
-      <Testimonials />
-      <CoursesProgram />
-      <StatsSection />
-      <CTA mode={1}/>
-      <TrainingFeatures />
-      <MissionAndVision />
-      <WhyChoose />
-      <CTA mode={2}/>
-      <KeepInTouch />
-      <FaqSection />
-      <Footer />
-    </div>
-  );
+    return (
+        <div className="w-full h-full overflow-hidden">
+
+            <section className="flex flex-col items-center justify-center overflow-hidden bg-white">
+                <NavMenu mode="dark" />
+            </section>
+
+            <div className="pt-20">
+                <AboutUs />
+            </div>
+            <CTA mode={0} />
+            <Testimonials />
+            <MissionAndVision />
+            <WhyChoose />
+            <CTA mode={2} />
+            <FaqSection />
+            <Footer />
+        </div>
+    );
 }
