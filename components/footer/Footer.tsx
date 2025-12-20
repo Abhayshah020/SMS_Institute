@@ -111,7 +111,10 @@ export default function Footer() {
                     className="border-t border-primary-foreground/20 pt-8"
                 >
                     <div className="flex flex-col sm:flex-row justify-between items-center text-sm text-primary-foreground/70 gap-4">
-                        <p>&copy; {currentYear} SMS Skills & Trades Institute. All rights reserved.</p>
+                        <a href="https://smsitsolutions.com.au/">
+                            © {new Date().getFullYear()} Powered by SMS IT Solutions. All rights reserved.
+                        </a>
+
                         <div className="flex gap-6">
                             <a
                                 href="#"
