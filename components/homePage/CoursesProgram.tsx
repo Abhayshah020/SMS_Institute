@@ -5,26 +5,6 @@ import React from "react";
 
 const courses = [
     {
-        title: "AC & Refrigeration Technician",
-        overview:
-            "This program trains students in installation, maintenance, and repair of air conditioning and refrigeration systems with hands-on exposure.",
-        skills: [
-            "AC installation & servicing",
-            "Cooling systems troubleshooting",
-            "Refrigerant handling",
-            "Electrical components & safety",
-            "Maintenance of commercial & domestic units",
-        ],
-        careers: [
-            "HVAC Technician",
-            "Cooling System Installer",
-            "Industrial Refrigeration Technician",
-            "Overseas HVAC Assistant (Gulf, Europe, Australia)",
-        ],
-        image: "/assets/coreImageCompressorWebp/1.webp",
-        icon: "❄️",
-    },
-    {
         title: "Aged Care Nurse",
         overview:
             "Learn caregiving skills following Australian Aged Care Standards focusing on safety, hygiene, and patient-centered care.",
@@ -44,6 +24,27 @@ const courses = [
         image: "/assets/coreImageCompressorWebp/2.webp",
         icon: "🧓",
     },
+    {
+        title: "AC & Refrigeration Technician",
+        overview:
+            "This program trains students in installation, maintenance, and repair of air conditioning and refrigeration systems with hands-on exposure.",
+        skills: [
+            "AC installation & servicing",
+            "Cooling systems troubleshooting",
+            "Refrigerant handling",
+            "Electrical components & safety",
+            "Maintenance of commercial & domestic units",
+        ],
+        careers: [
+            "HVAC Technician",
+            "Cooling System Installer",
+            "Industrial Refrigeration Technician",
+            "Overseas HVAC Assistant (Gulf, Europe, Australia)",
+        ],
+        image: "/assets/coreImageCompressorWebp/1.webp",
+        icon: "❄️",
+    },
+
     {
         title: "Carpenter",
         overview:

@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 export default function NavMenu({ mode }: { mode: 'light' | 'dark' }) {
+    const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(false);
 
     const menuItems = [
@@ -25,81 +27,65 @@ export default function NavMenu({ mode }: { mode: 'light' | 'dark' }) {
             title: "Contact Us",
             link: "/contact-us",
         },
-        {
-            title: "Enroll Now",
-            link: "/enroll-now",
-        },
     ]
 
     return (
-        <>
-            <nav className="absolute top-6 flex justify-between items-center w-full md:w-[70%] px-4 md:px-0 z-20">
-                <div className="hidden md:flex items-center gap-4" style={{ color: mode === 'dark' ? 'black' : 'white' }}>
-                    <Phone size={24} fill={mode === 'dark' ? 'black' : "white"} />
-                    <span className="font-medium">+61 45 009 8141</span>
-                </div>
+        <nav className="fixed top-0 w-full z-50 border-b border-[rgba(0,0,0,0.1)] bg-white/30 backdrop-blur-sm">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between items-center h-16 md:h-20">
+                    {/* Logo Section */}
+                    <div className="flex gap-1 items-center">
+                        <Image src='/assets/logo.webp' alt="Logo" width={50} height={50} className="mx-auto" />
+                        <a href="/" className="font-extrabold text-xl sm:text-2xl md:text-3xl text-blue-400 tracking-wide" >
+                            SMS{" "}
+                            <span className="text-base" style={{ color: 'black' }}>
+                                Skills & Trades Institue
+                            </span>
+                        </a>
+                    </div>
 
-                <div className="flex gap-1 items-center">
-                    <Image src='/assets/logo.webp' alt="Logo" width={50} height={50} className="mx-auto" />
-                    <a
-                        href="/"
-                        className="font-extrabold text-xl sm:text-2xl md:text-3xl text-blue-400 tracking-wide"
-                    >
-                        SMS{" "}
-                        <span className="text-base" style={{ color: mode === 'dark' ? 'black' : 'white' }}>Skills & Trades Institue</span>
-                    </a>
-                </div>
-
-                <div className="flex items-center gap-4">
-                    <a
-                        href="/enroll-now"
-                        className="hidden uppercase cursor-pointer md:inline bg-gradient-to-r from-blue-500 to-blue-600 text-white px-5 py-2 rounded-full shadow-lg font-semibold transition-all"
-                    >
-                        Enroll Now
-                    </a>
-
-                    <Menu
-                        size={24}
-                        className="cursor-pointer"
-                        style={{ color: mode === 'dark' ? 'black' : 'white' }}
-                        onClick={() => setIsOpen(true)}
-                    />
-                </div>
-            </nav>
-
-            <AnimatePresence>
-                {isOpen && (
-                    <motion.div
-                        key="menu-modal"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        className="fixed inset-0 bg-black/75 gap-5 z-50 flex flex-col justify-center items-center"
-                    >
-                        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
-                        <X
-                            size={32}
-                            className="text-white z-10 absolute top-6 right-6 cursor-pointer"
-                            onClick={() => setIsOpen(false)}
-                        />
-
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex items-center gap-8 lg:gap-12">
                         {menuItems.map((item, idx) => (
-                            <motion.a
+                            <Link
                                 key={idx}
                                 href={item.link}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="text-white uppercase tracking-tighter cursor-pointer z-10 text-3xl md:text-4xl font-bold tracking-wide px-6 py-2 hover:text-yellow-400 transition-colors"
-                                onClick={() => {
-                                    setIsOpen(false);
-                                }}
+                                className={`font-medium px-6 py-2 transition-colors hover:text-blue-500 ${pathname === item.link ? "text-blue-500" : ""}`}
                             >
                                 {item.title}
-                            </motion.a>
+                            </Link>
                         ))}
-                    </motion.div>
+                    </div>
+
+                    <a href="/enroll-now" className="hidden uppercase cursor-pointer md:inline bg-gradient-to-r from-blue-500 to-blue-600 text-white px-5 py-2 rounded-full shadow-lg font-semibold transition-all" > Enroll Now </a>
+
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="md:hidden text-black p-2"
+                        aria-label="Toggle menu"
+                    >
+                        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                    </button>
+                </div>
+
+                {/* Mobile Navigation */}
+                {isOpen && (
+                    <div className="md:hidden bg-background/90 border-t border-gray-700">
+                        <div className="flex flex-col gap-2 p-4">
+                            {menuItems.map((item, idx) => (
+                                <Link
+                                    key={idx}
+                                    href={item.link}
+                                    className={`font-medium px-6 py-2 transition-colors hover:text-blue-500 ${pathname === item.link ? "text-blue-500" : ""}`}
+                                    onClick={() => setIsOpen(false)}
+                                >
+                                    {item.title}
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
                 )}
-            </AnimatePresence>
-        </>
+            </div>
+        </nav>
     );
 }

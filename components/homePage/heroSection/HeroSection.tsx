@@ -17,7 +17,7 @@ export default function HeroSection() {
                 playsInline
                 className="absolute inset-0 w-full h-full object-cover opacity-90 bg-black"
                 style={{
-                    clipPath: "polygon(0 0, 100% 0, 100% 75%, 0% 100%)",
+                    // clipPath: "polygon(0 0, 100% 0, 100% 75%, 0% 100%)",
                 }}
                 poster="/assets/images/heroFallback.jpg" // optional, works as fallback too
             >
@@ -28,7 +28,7 @@ export default function HeroSection() {
             <div
                 className="absolute inset-0 bg-black/60 backdrop-blur-sm"
                 style={{
-                    clipPath: "polygon(0 0, 100% 0, 100% 75%, 0% 100%)"
+                    // clipPath: "polygon(0 0, 100% 0, 100% 75%, 0% 100%)"
                 }}
             />
 
@@ -36,7 +36,7 @@ export default function HeroSection() {
 
 
             {/* Hero Content */}
-            <div className="relative z-10 flex flex-col items-center text-center mt-[-15%] md:mt-[-5%] w-[90%] md:w-[70%] md:px-6">
+            <div className="relative z-10 flex flex-col items-center text-center w-[90%] md:w-[70%] md:px-6">
                 <motion.p
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={introDone ? { opacity: 1, y: 0 } : {}}
