@@ -127,7 +127,7 @@ export default function KeepInTouch() {
                         type="submit"
                         className="w-full cursor-pointer sm:w-auto bg-yellow-400 text-gray-900 font-semibold px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg shadow-md hover:bg-yellow-300 transition-all"
                     >
-                        Send Message
+                        Send Message (Service Unabailable at the moment)
                     </motion.button>
                 </motion.form>
             </div>

@@ -84,10 +84,26 @@ export default function Footer() {
                     <div>
                         <h4 className="text-lg font-bold mb-4">Contact Info</h4>
                         <div className="space-y-3 text-sm">
+                            
+
+
+
                             <p className="text-primary-foreground/80">
-                                <strong>Phone:</strong>{" "}
+                                <strong>Australia Office</strong>{" "}
                                 <a href="tel:9851190713" className="hover:text-accent transition-colors duration-200">
-                                    9851190713
+                                    Address: Suite 6, 247 Church Street Parramatta NSW 2150
+                                </a>
+                            </p>
+                            <p className="text-primary-foreground/80">
+                                <strong>Nepal Office</strong>{" "}
+                                <a href="tel:9851190713" className="hover:text-accent transition-colors duration-200">
+                                    Address: SMS House– Koteshwor (Opp. Bhatbhateni)
+                                </a>
+                            </p>
+                            <p className="text-primary-foreground/80">
+                                <strong>Phone:</strong>{" "} <br />
+                                <a href="tel:+61450366703" className="hover:text-accent transition-colors duration-200">
+                                    +61 450 366 703, <br /> +977 974 443 5902
                                 </a>
                             </p>
                             <p className="text-primary-foreground/80">
