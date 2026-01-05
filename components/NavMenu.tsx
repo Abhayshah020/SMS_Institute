@@ -20,6 +20,10 @@ export default function NavMenu({ mode }: { mode: 'light' | 'dark' }) {
             link: "/our-programs",
         },
         {
+            title: "Nursing Program",
+            link: "/nursing-program",
+        },
+        {
             title: "About Us",
             link: "/about-us",
         },
