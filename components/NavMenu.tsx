@@ -54,7 +54,7 @@ export default function NavMenu({ mode }: { mode: 'light' | 'dark' }) {
                             <Link
                                 key={idx}
                                 href={item.link}
-                                className={`font-medium px-6 py-2 transition-colors hover:text-blue-500 ${pathname === item.link ? "text-blue-500" : ""}`}
+                                className={`font-medium py-2 transition-colors hover:text-blue-500 ${pathname === item.link ? "text-blue-500" : ""}`}
                             >
                                 {item.title}
                             </Link>
