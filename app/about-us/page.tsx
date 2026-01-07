@@ -16,10 +16,9 @@ export default function Home() {
                 <NavMenu mode="dark" />
             </section>
             <div className="pt-20">
+                <AboutUs />
                 <LeadershipMessages />
             </div>
-            <AboutUs />
-            <CTA mode={0} />
             <Testimonials />
             <MissionAndVision />
             <WhyChoose />

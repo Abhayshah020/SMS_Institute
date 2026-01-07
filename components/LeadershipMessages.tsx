@@ -102,13 +102,13 @@ export default function LeadershipMessages() {
 
     return (
         <div className="py-10 bg-white w-full flex items-center justify-center">
-            <div className="w-full px-4 md:px-0 md:w-[70%]"> 
+            <div className="w-full px-4 md:px-0 md:w-[70%]">
                 {/* Header Section */}
                 <div className="text-center my-5">
                     <h1 className="text-5xl md:text-6xl text-slate-900 mb-6 leading-tight text-balance">
                         Messages from{" "}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-600">
-                            Our Leadership
+                            Our Leaders
                         </span>
                     </h1>
                     <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
@@ -118,7 +118,7 @@ export default function LeadershipMessages() {
                 </div>
 
                 {/* Messages Grid */}
-                <div className="grid md:grid-cols-3 gap-8 mb-16">
+                <div className="flex flex-col gap-8 mb-16">
                     {messages.map((msg) => (
                         <div
                             key={msg.id}
@@ -138,65 +138,23 @@ export default function LeadershipMessages() {
                                 <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${msg.color}`}></div>
 
                                 {/* Card Content */}
-                                <div className="p-8 h-full flex flex-col">
+                                <div className="p-4 md:p-8 h-full flex flex-col">
                                     {/* Profile Image Section - Added image display for expanded view */}
-                                    {expandedId === msg.id && (
-                                        <div className="flex items-start gap-8 mb-8 pb-8 border-b border-blue-100">
-                                            <div className="flex-shrink-0">
-                                                <div
-                                                    className={`relative w-32 h-32 rounded-2xl overflow-hidden ring-4 ring-blue-200 bg-gradient-to-br ${msg.color} shadow-xl`}
-                                                >
-                                                    <Image
-                                                        src={msg.image || "/placeholder.svg"}
-                                                        alt={msg.imageAlt}
-                                                        width={128}
-                                                        height={128}
-                                                        className="w-full h-full object-cover"
-                                                    />
-                                                </div>
-                                            </div>
-                                            <div className="flex-grow">
-                                                {/* Role Badge */}
-                                                <div className="mb-4">
-                                                    <span
-                                                        className={`inline-block px-4 py-2 rounded-full text-xs font-bold tracking-widest text-white bg-gradient-to-r ${msg.color}`}
-                                                    >
-                                                        {msg.role}
-                                                    </span>
-                                                </div>
-
-                                                {/* Name and Title */}
-                                                <h2 className="text-3xl  text-slate-900 mb-2">{msg.name}</h2>
-                                                <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide">{msg.title}</p>
-                                                <p className="text-xs text-slate-500 mt-2">{msg.organization}</p>
-
-                                                {/* Experience */}
-                                                <div className="mt-4 pt-4 border-t border-blue-100">
-                                                    <p className="text-xs text-blue-600 font-bold uppercase tracking-wide mb-2">
-                                                        Professional Experience
-                                                    </p>
-                                                    <p className="text-sm text-slate-700 font-semibold">{msg.experience}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    {/* Card View - collapsed state */}
-                                    {expandedId !== msg.id && (
-                                        <div className="mb-6">
-                                            {/* Profile Image - small preview */}
+                                    <div className="flex flex-col  md:flex-row items-start gap-8 mb-8 pb-8 border-b border-blue-100">
+                                        <div className="flex-shrink-0">
                                             <div
-                                                className={`relative w-20 h-20 rounded-full overflow-hidden ring-3 ring-blue-200 mb-6 bg-gradient-to-br ${msg.color}`}
+                                                className={`relative w-32 h-40 rounded-2xl overflow-hidden ring-4 ring-blue-200 bg-gradient-to-br ${msg.color} shadow-xl`}
                                             >
                                                 <Image
                                                     src={msg.image || "/placeholder.svg"}
                                                     alt={msg.imageAlt}
-                                                    width={80}
-                                                    height={80}
+                                                    width={128}
+                                                    height={128}
                                                     className="w-full h-full object-cover"
                                                 />
                                             </div>
-
+                                        </div>
+                                        <div className="flex-grow">
                                             {/* Role Badge */}
                                             <div className="mb-4">
                                                 <span
@@ -207,42 +165,31 @@ export default function LeadershipMessages() {
                                             </div>
 
                                             {/* Name and Title */}
-                                            <h2 className="text-2xl  text-slate-900 mb-2">{msg.name}</h2>
+                                            <h2 className="text-3xl  text-slate-900 mb-2">{msg.name}</h2>
                                             <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide">{msg.title}</p>
-                                            <p className="text-xs text-slate-500 mt-1">{msg.organization}</p>
+                                            <p className="text-xs text-slate-500 mt-2">{msg.organization}</p>
 
                                             {/* Experience */}
-                                            <div className="mt-4 pt-4 border-b border-blue-100 pb-6">
+                                            <div className="mt-4 pt-4 border-t border-blue-100">
                                                 <p className="text-xs text-blue-600 font-bold uppercase tracking-wide mb-2">
                                                     Professional Experience
                                                 </p>
-                                                <p className="text-sm text-slate-700 font-medium">{msg.experience}</p>
+                                                <p className="text-sm text-slate-700 font-semibold">{msg.experience}</p>
                                             </div>
                                         </div>
-                                    )}
-
+                                    </div>
                                     {/* Message Preview / Full */}
                                     <div className="flex-grow mb-6">
-                                        {expandedId === msg.id ? (
-                                            <div className="space-y-4 text-slate-700 leading-relaxed">
-                                                {msg.message.split("\n\n").map((paragraph, idx) => (
-                                                    <p key={idx} className="text-sm text-justify lg:text-base whitespace-pre-wrap">
-                                                        {paragraph}
-                                                    </p>
-                                                ))}
-                                            </div>
-                                        ) : (
-                                            <p className="text-sm text-slate-600 line-clamp-4">{msg.message}</p>
-                                        )}
+                                        <div className="space-y-4 text-slate-700 leading-relaxed">
+                                            {msg.message.split("\n\n").map((paragraph, idx) => (
+                                                <p key={idx} className="text-sm text-justify lg:text-base whitespace-pre-wrap">
+                                                    {paragraph}
+                                                </p>
+                                            ))}
+                                        </div>
                                     </div>
 
                                     {/* Read More / Collapse */}
-                                    <div className="flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-700 group-hover:gap-3 transition-all">
-                                        <span>{expandedId === msg.id ? "Close Message" : "Read Full Message"}</span>
-                                        <ChevronRight
-                                            className={`w-4 h-4 transition-transform duration-300 ${expandedId === msg.id ? "rotate-90" : ""}`}
-                                        />
-                                    </div>
                                 </div>
                             </div>
                         </div>
